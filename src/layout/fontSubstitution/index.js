@@ -24,8 +24,8 @@ const getOrCreateFont = name => {
 const shouldFallbackToFont = (codePoint, font) => {
   return (
     !IGNORED_CODE_POINTS.includes(codePoint) &&
-    !font.hasGlyphForCodePoint(codePoint) &&
-    getFallbackFont().hasGlyphForCodePoint(codePoint)
+    !font || (!font.hasGlyphForCodePoint(codePoint) &&
+    getFallbackFont().hasGlyphForCodePoint(codePoint))
   );
 };
 
